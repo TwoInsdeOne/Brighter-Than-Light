@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - heart
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: background
+    uniqueID: 3456846043
+    locked: 0
+  - name: walls
+    uniqueID: 44624635
+    locked: 0
+  - name: objects
+    uniqueID: 2569469203
+    locked: 0
+  - name: player
+    uniqueID: 300561861
+    locked: 0
+  - name: front objects
+    uniqueID: 2169646937
+    locked: 0
+  - name: foreground
+    uniqueID: 308456935
+    locked: 0
+  - name: effects
+    uniqueID: 53856941
+    locked: 0
+  - name: UI
+    uniqueID: 3511813321
+    locked: 0
