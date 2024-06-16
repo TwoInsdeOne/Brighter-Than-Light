@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - heart
+  - enemy
+  - disabled enemy
   layers:
   - Default
   - TransparentFX
@@ -12,11 +14,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - fire star
+  - wall
+  - shield
+  - player
+  - ghost
   - 
   - 
   - 
@@ -56,6 +58,9 @@ TagManager:
     locked: 0
   - name: front objects
     uniqueID: 2169646937
+    locked: 0
+  - name: front objects no light
+    uniqueID: 1209727961
     locked: 0
   - name: foreground
     uniqueID: 308456935
