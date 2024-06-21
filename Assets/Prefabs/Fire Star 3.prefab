@@ -294,11 +294,13 @@ MonoBehaviour:
   point1: {fileID: 8887566985915491023}
   point2: {fileID: 4537401585803130553}
   body: {fileID: 3080537056295758182}
-  speed: 400
+  speed: 1000
   turn: 1
   damage: 15
   active: 0
   deactive: 0
+  massOnDeactivation: 15
+  stuckTimer: 0
 --- !u!95 &2155242376462200436
 Animator:
   serializedVersion: 5

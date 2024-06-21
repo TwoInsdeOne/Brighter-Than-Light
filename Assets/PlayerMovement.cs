@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Vector2 direction;
     public float speed;
+    public Animator visualAnimator;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +23,16 @@ public class PlayerMovement : MonoBehaviour
         direction = playerControl.Movement.Move.ReadValue<Vector2>();
         direction.Normalize();
         rb.AddForce(direction*speed);
+        if(direction.x > 0)
+        {
+            visualAnimator.SetInteger("direction", 1);
+        }else if(direction.x < 0)
+        {
+            visualAnimator.SetInteger("direction", -1);
+        }else if(direction.x == 0)
+        {
+            visualAnimator.SetInteger("direction", 0);
+        }
     }
+    
 }

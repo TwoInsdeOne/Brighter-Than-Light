@@ -14,9 +14,10 @@ public class CrystalFlowerTrigger : MonoBehaviour
 {
     public CrystalFlower crystalFlower;
     public int healAmount;
+    public bool triggered;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag == "Player" && !triggered)
         {
             GetComponent<Animator>().SetTrigger("on");
             if(crystalFlower == CrystalFlower.Shield)
@@ -39,6 +40,7 @@ public class CrystalFlowerTrigger : MonoBehaviour
                     firestar.GetComponent<FireStar>().Deactivate();
                 }
             }
+            triggered = true;
         }
     }
 }

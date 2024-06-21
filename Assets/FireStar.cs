@@ -13,15 +13,18 @@ public class FireStar : MonoBehaviour
     public int damage;
     public bool active;
     public bool deactive;
+    public float massOnDeactivation;
+    public float stuckTimer;
     // Start is called before the first frame update
     void Start()
     {
         active = true;
         deactive = false;
+        stuckTimer = 0;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (active)
         {
@@ -48,6 +51,18 @@ public class FireStar : MonoBehaviour
                     }
                 }
             }
+            TestStuck();
+            if(stuckTimer > 1f)
+            {
+                if(turn == 1)
+                {
+                    turn = 2;
+                } else if(turn == 2)
+                {
+                    turn = 1;
+                }
+                stuckTimer = 0;
+            }
         }
         
     }
@@ -63,11 +78,22 @@ public class FireStar : MonoBehaviour
         gameObject.tag = "disabled enemy";
         body.tag = "disabled enemy";
         GetComponent<Animator>().SetTrigger("deactivate");
+        rb.mass = massOnDeactivation;
 
     }
     public void Deactivate()
     {
         deactive = true;
+    }
+    void TestStuck()
+    {
+        if(rb.velocity.sqrMagnitude < 0.25f)
+        {
+            stuckTimer += Time.deltaTime;
+        } else
+        {
+            stuckTimer = 0;
+        }
     }
     
 }
