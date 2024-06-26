@@ -15,6 +15,7 @@ public class FireStar : MonoBehaviour
     public bool deactive;
     public float massOnDeactivation;
     public float stuckTimer;
+    public ParticleSystem trail;
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +80,8 @@ public class FireStar : MonoBehaviour
         body.tag = "disabled enemy";
         GetComponent<Animator>().SetTrigger("deactivate");
         rb.mass = massOnDeactivation;
+        ParticleSystem.EmissionModule emission = trail.emission;
+        emission.rateOverTime = 0;
 
     }
     public void Deactivate()

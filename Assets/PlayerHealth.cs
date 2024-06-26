@@ -18,6 +18,11 @@ public class PlayerHealth : MonoBehaviour
 
     public Animator visualAnimator;
     public float timer;
+    public PlayerMovement playerMovement;
+    public bool gameover;
+    public ParticleSystem ghostTrail;
+    public Animator gameoverScreen;
+    public Animator shakeAni;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,17 +42,25 @@ public class PlayerHealth : MonoBehaviour
         s.scale = new Vector3(hpLenght, 0.33f, 1);
 
         timer -= Time.deltaTime;
+        if(timer < 0.9f)
+        {
+            playerMovement.free = true;
+        }
         if(timer < 0)
         {
+            playerMovement.playerControl.Enable();
+            
             timer = 0;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
-        if(collision.gameObject.tag == "enemy" && !shieldController.active && timer <= 0)
+        if(collision.gameObject.tag == "enemy" && !shieldController.active && timer <= 0 && !gameover)
         {
             timer = 1;
+            playerMovement.playerControl.Disable();
+            playerMovement.free = false;
             Vector2 mPoint = transform.position + (collision.transform.position - transform.position).normalized *transform.localScale.x* 0.4f;
             GameObject fire = Instantiate(fire1VFX);
             fire.transform.position = mPoint;
@@ -59,11 +72,14 @@ public class PlayerHealth : MonoBehaviour
                 DamageAnimation(1);
             }
             int damage = collision.transform.parent.GetComponent<FireStar>().damage;
+            TakeDamate(damage);
+
             Vector2 direction = (transform.position - collision.transform.position).normalized;
             rb.AddForce(direction * damage *kbSpeed );
-
-            TakeDamate(damage);
+            shakeAni.SetTrigger("shake");
             
+
+
         }
 
     }
@@ -74,9 +90,19 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamate(int amount)
     {
         health -= amount;
-        if(health < 0)
+
+        if(health <= 0)
         {
             health = 0;
+            playerMovement.playerControl.Disable();
+            rb.constraints = RigidbodyConstraints2D.None;
+            rb.gravityScale = 1;
+            rb.mass = 100;
+            visualAnimator.SetTrigger("death");
+            gameoverScreen.SetBool("game over", true);
+            ParticleSystem.EmissionModule emission = ghostTrail.emission;
+            emission.rateOverTime = 0;
+            gameover = true;
         }
     }
     public void DamageAnimation(int side)

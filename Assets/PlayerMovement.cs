@@ -10,29 +10,35 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 direction;
     public float speed;
     public Animator visualAnimator;
+    public bool free;
     // Start is called before the first frame update
     void Start()
     {
         playerControl = new PlayerControl();
         playerControl.Movement.Enable();
+        free = true;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        direction = playerControl.Movement.Move.ReadValue<Vector2>();
-        direction.Normalize();
-        rb.AddForce(direction*speed);
-        if(direction.x > 0)
+        if (free)
         {
-            visualAnimator.SetInteger("direction", 1);
-        }else if(direction.x < 0)
-        {
-            visualAnimator.SetInteger("direction", -1);
-        }else if(direction.x == 0)
-        {
-            visualAnimator.SetInteger("direction", 0);
+            direction = playerControl.Movement.Move.ReadValue<Vector2>();
+            direction.Normalize();
+            rb.AddForce(direction * speed);
+            if (direction.x > 0)
+            {
+                visualAnimator.SetInteger("direction", 1);
+            } else if (direction.x < 0)
+            {
+                visualAnimator.SetInteger("direction", -1);
+            } else if (direction.x == 0)
+            {
+                visualAnimator.SetInteger("direction", 0);
+            }
         }
+        
     }
     
 }
