@@ -7,6 +7,7 @@ public class TrackSwitchArea : MonoBehaviour
     public bool switched;
     public SoundtrackManager soundtrack;
     public AudioClip track;
+    public bool loopTrack;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class TrackSwitchArea : MonoBehaviour
     {
         if(collision.tag == "Player" && !switched)
         {
-            soundtrack.SwitchToTrack(track);
+            soundtrack.SwitchToTrack(track, loopTrack);
             switched = true;
         }
     }
