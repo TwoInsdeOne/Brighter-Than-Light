@@ -6,6 +6,9 @@ public class FireStarTrigger : MonoBehaviour
 {
     public Transform fireStarSet;
     public bool done;
+    public SplineFollowerGenerator sfg;
+    public BSpline nextSpline;
+    public bool setNextSpline;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,10 @@ public class FireStarTrigger : MonoBehaviour
             }
             done = true;
             GetComponent<Animator>().SetTrigger("deactivate");
+            if (setNextSpline)
+            {
+                sfg.currentSpline = nextSpline;
+            }
         }
     }
 }
