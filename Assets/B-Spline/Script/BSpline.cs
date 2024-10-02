@@ -54,6 +54,10 @@ public class BSpline : MonoBehaviour
     }
     public Vector2 FullLerp(float m)
     {
+        if(m >= 1)
+        {
+            m = 0.99999f;
+        }
         m = m * (points.Count - 3);
         int currenIndex = ((int)Mathf.Floor(m));
         float t = m - currenIndex;

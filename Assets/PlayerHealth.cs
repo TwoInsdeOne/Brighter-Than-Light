@@ -23,6 +23,9 @@ public class PlayerHealth : MonoBehaviour
     public ParticleSystem ghostTrail;
     public Animator gameoverScreen;
     public Animator shakeAni;
+
+    public List<SpriteRenderer> scars;
+    public List<ParticleSystem> blood;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +54,16 @@ public class PlayerHealth : MonoBehaviour
             playerMovement.playerControl.Enable();
             
             timer = 0;
+        }
+
+        for (int i = 0; i < scars.Count; i++)
+        {
+            scars[i].color = new Color(1, 1, 1, 1 - (health + 0f) / maxHealth);
+        }
+        for (int i = 0; i < blood.Count; i++)
+        {
+            ParticleSystem.EmissionModule bloodEmission = blood[i].emission;
+            bloodEmission.rateOverTime = (5+ i) * (1 - (health + 0f) / maxHealth);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

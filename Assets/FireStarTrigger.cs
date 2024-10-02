@@ -30,7 +30,7 @@ public class FireStarTrigger : MonoBehaviour
             GetComponent<Animator>().SetTrigger("deactivate");
             if (setNextSpline)
             {
-                sfg.currentSpline = nextSpline;
+                sfg.UpdateSpline(nextSpline);
             }
         }
     }

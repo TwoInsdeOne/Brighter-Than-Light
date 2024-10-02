@@ -12,6 +12,7 @@ public class GhostMode : MonoBehaviour
     public Animator ani;
     public Animator hudAni;
     public ColorChanger changer;
+    //public AnimationClip ghostHudAnimation;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,12 +41,13 @@ public class GhostMode : MonoBehaviour
         changer.ChangeToColor(1);
         if(hudAni.GetBool("ghost hud"))
         {
-            hudAni.SetBool("ghost hud", false);
+            hudAni.SetTrigger("repeat");
         }
         hudAni.SetBool("ghost hud", true);
     }
     public void TurnOff()
     {
+        hudAni.ResetTrigger("repeat");
         active = false;
         gameObject.layer = 9;
         //ani.SetBool("ghost", false);

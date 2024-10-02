@@ -8,6 +8,8 @@ public class SplineFollowerGenerator : MonoBehaviour
     public float interval;
     private float timer;
     public BSpline currentSpline;
+    public BSpline previousSpline;
+    //public GameObject reverseSplineFollower;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,23 @@ public class SplineFollowerGenerator : MonoBehaviour
             GameObject sf = Instantiate(splineFollower);
             sf.GetComponent<FollowSpline>().spline = currentSpline;
             sf.transform.parent = transform;
+            sf.transform.position = currentSpline.FullLerp(0);
+            if (previousSpline != null)
+            {
+                GameObject rsf = Instantiate(splineFollower);
+                rsf.GetComponent<FollowSpline>().spline = previousSpline;
+                rsf.GetComponent<FollowSpline>().Reverse();
+                rsf.transform.parent = transform;
+                rsf.transform.position = previousSpline.FullLerp(1);
+            }
             timer = interval;
+            
         }
+    }
+    public void UpdateSpline(BSpline newSpline)
+    {
+        previousSpline = currentSpline;
+        currentSpline = newSpline;
+        
     }
 }
