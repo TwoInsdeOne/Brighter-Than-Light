@@ -18,6 +18,10 @@ public class SoundtrackManager : MonoBehaviour
     {
         
     }
+    public void Play()
+    {
+        audioSource.Play();
+    }
     public void SwitchToTrack(AudioClip track, bool loop)
     {
         animator.SetTrigger("switchtrack");

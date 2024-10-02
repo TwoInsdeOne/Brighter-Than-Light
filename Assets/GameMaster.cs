@@ -7,6 +7,12 @@ public class GameMaster : MonoBehaviour
     public string game;
     public GameObject ressurectionWings;
     public Vector2 playerStartLocation;
+    private bool initialized;
+    public SoundtrackManager soundtrackManager;
+    private void Awake()
+    {
+        Time.timeScale = 0f;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +22,12 @@ public class GameMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!initialized)
+        {
+            soundtrackManager.Play();
+            Time.timeScale = 1.0f;
+            initialized = true;
+        }
     }
     public void Reload()
     {

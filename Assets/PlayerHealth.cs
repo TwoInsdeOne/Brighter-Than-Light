@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
     public float hpX;
 
     public Animator visualAnimator;
-    public float timer;
+    public float damageTimer;
     public PlayerMovement playerMovement;
     public bool gameover;
     public ParticleSystem ghostTrail;
@@ -26,10 +26,16 @@ public class PlayerHealth : MonoBehaviour
 
     public List<SpriteRenderer> scars;
     public List<ParticleSystem> blood;
+
+
+    public GameObject bleeding;
+    public ParticleSystem bleedingFX;
+
+    public GameObject healingFX;
     // Start is called before the first frame update
     void Start()
     {
-        
+        bleedingFX = bleeding.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -44,16 +50,17 @@ public class PlayerHealth : MonoBehaviour
         s.position = new Vector3(hpX, 0, 0);
         s.scale = new Vector3(hpLenght, 0.33f, 1);
 
-        timer -= Time.deltaTime;
-        if(timer < 0.9f)
+        damageTimer -= Time.deltaTime;
+        if(damageTimer < 0.9f)
         {
             playerMovement.free = true;
         }
-        if(timer < 0)
+        if(damageTimer < 0)
         {
             playerMovement.playerControl.Enable();
-            
-            timer = 0;
+            ParticleSystem.EmissionModule bleedingEmission = bleedingFX.emission;
+            bleedingEmission.rateOverTime = 0;
+            damageTimer = 0;
         }
 
         for (int i = 0; i < scars.Count; i++)
@@ -69,14 +76,18 @@ public class PlayerHealth : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
-        if(collision.gameObject.tag == "enemy" && !shieldController.active && timer <= 0 && !gameover)
+        if(collision.gameObject.tag == "enemy" && !shieldController.active && damageTimer <= 0 && !gameover)
         {
-            timer = 1;
+            damageTimer = 1;
             playerMovement.playerControl.Disable();
             playerMovement.free = false;
             Vector2 mPoint = transform.position + (collision.transform.position - transform.position).normalized *transform.localScale.x* 0.4f;
             GameObject fire = Instantiate(fire1VFX);
             fire.transform.position = mPoint;
+            bleeding.transform.position = mPoint;
+            bleeding.transform.parent = transform;
+            ParticleSystem.EmissionModule bleedingEmission = bleedingFX.emission;
+            bleedingEmission.rateOverTime = 50;
             if(collision.transform.position.x < transform.position.x)
             {
                 DamageAnimation(-1);
@@ -98,7 +109,17 @@ public class PlayerHealth : MonoBehaviour
     }
     public void Heal(int amount)
     {
+        int actualAmount = amount;
+        if(health + amount > maxHealth)
+        {
+            actualAmount = maxHealth - health;
+        }
         health = Mathf.Min(health + amount, maxHealth);
+        GameObject hFX = Instantiate(healingFX);
+        hFX.transform.position = transform.position;
+        hFX.transform.parent = transform;
+        ParticleSystem.EmissionModule hFXemission = hFX.GetComponent<ParticleSystem>().emission;
+        hFXemission.rateOverTime = actualAmount * 5;
     }
     public void TakeDamate(int amount)
     {
