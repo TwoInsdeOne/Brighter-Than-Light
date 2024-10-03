@@ -9,6 +9,7 @@ public class FireStarTrigger : MonoBehaviour
     public SplineFollowerGenerator sfg;
     public BSpline nextSpline;
     public bool setNextSpline;
+    public Door doorToOpen;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,10 @@ public class FireStarTrigger : MonoBehaviour
             if (setNextSpline)
             {
                 sfg.UpdateSpline(nextSpline);
+            }
+            if(doorToOpen != null)
+            {
+                doorToOpen.UnlockDoor();
             }
         }
     }

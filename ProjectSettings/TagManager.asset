@@ -7,6 +7,7 @@ TagManager:
   - heart
   - enemy
   - disabled enemy
+  - door
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,34 @@
+1 - 0:00
+	tema principal, fundo preto, particulas 1, titulo azul 2849FF
+2 - 0:12
+	particulas 2, titulo rosa BD28FF
+3 - 0:24
+	particulas 3, título azul 2849FF
+4 - 0:36
+	tema secundário, fundo azul 0050FF, particulas 4, título branco
+5 - 1:06
+	tema terciário, fundo rosa AA58FF, particulas 5 e 2, título preto
+6 - 1:24 - 84
+	tema quartenário, fundo branco, particulas 6 e 4, título rosa BD28FF
+7 - 1:36 - 96
+	tema principal, fundo preto, particulas 1 e 2, título rosa BD28FF
+8 - 1:48 - 108
+	particulas 1 e 3, título azul 2849FF
+9 - 2:12 - 132
+	tema quintário, fundo amarelo FEFF58, particulas 6, título azul escuro
+10 - 2:18 - 138
+	tema secundário, fundo azul 0050FF, particulas 2 e 5, título branco
+11 - 2:30 - 150
+	fundo roxo 49007E, particulas 1 e 5, título branco
+12 - 2:42 - 162
+	tema terciário, fundo rosa, particulas 5 e 2, título preto
+13 - 3:00 -> 3:12 - 180 - 192
+	tema principal, fundo preto, particulas 1, titulo azul 2849FF
+
+cores: preto, branco, azul título, rosa título, azul fundo, rosa fundo, amarelo fundo, roxo fundo
+
+cores de fundos:
+preto, preto, preto, azul, rosa, branco, preto, preto, amarelo, azul, roxo, rosa, preto
+
+cores de titulos:
+azul, rosa, azul, branco, preto, rosa, rosa, azul, azul, branco, branco, preto, azul
