@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class EndGameEvent : MonoBehaviour
 {
     public UnityEvent endGame;
+    public UnityEvent restartGame;
     void Awake()
     {
         if(endGame == null)
@@ -17,5 +18,10 @@ public class EndGameEvent : MonoBehaviour
     public void End()
     {
         endGame.Invoke();
+    }
+
+    public void Restart()
+    {
+        restartGame.Invoke();
     }
 }

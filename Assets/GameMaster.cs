@@ -35,4 +35,8 @@ public class GameMaster : MonoBehaviour
     {
         SceneManager.LoadScene(game);
     }
+    public void ReloadTitle()
+    {
+        SceneManager.LoadScene("Title");
+    }
 }
