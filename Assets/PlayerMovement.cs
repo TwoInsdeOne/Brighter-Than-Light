@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public Animator visualAnimator;
     public bool free;
+    public FacePoses facePoses;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         if (free)
         {
             direction = playerControl.Movement.Move.ReadValue<Vector2>();
+            facePoses.y = direction.y;
             direction.Normalize();
             rb.AddForce(direction * speed);
             if (direction.x > 0)

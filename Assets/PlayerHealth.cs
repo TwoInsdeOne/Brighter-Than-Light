@@ -32,6 +32,8 @@ public class PlayerHealth : MonoBehaviour
     public ParticleSystem bleedingFX;
 
     public GameObject healingFX;
+
+    public FacePoses facePoses;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +62,7 @@ public class PlayerHealth : MonoBehaviour
             playerMovement.playerControl.Enable();
             ParticleSystem.EmissionModule bleedingEmission = bleedingFX.emission;
             bleedingEmission.rateOverTime = 0;
+            facePoses.DrawSprite(true);
             damageTimer = 0;
         }
 
@@ -142,5 +145,6 @@ public class PlayerHealth : MonoBehaviour
     public void DamageAnimation(int side)
     {
         visualAnimator.SetInteger("direction", 2 * side);
+        facePoses.DrawSprite(false);
     }
 }
