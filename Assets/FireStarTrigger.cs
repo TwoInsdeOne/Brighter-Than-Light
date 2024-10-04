@@ -10,6 +10,7 @@ public class FireStarTrigger : MonoBehaviour
     public BSpline nextSpline;
     public bool setNextSpline;
     public Door doorToOpen;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +38,7 @@ public class FireStarTrigger : MonoBehaviour
             {
                 doorToOpen.UnlockDoor();
             }
+            audioSource.Play();
         }
     }
 }

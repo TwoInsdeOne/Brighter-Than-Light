@@ -15,6 +15,7 @@ public class CrystalFlowerTrigger : MonoBehaviour
     public CrystalFlower crystalFlower;
     public int healAmount;
     public bool triggered;
+    public AudioSource audioSource;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player" && !triggered)
@@ -42,5 +43,9 @@ public class CrystalFlowerTrigger : MonoBehaviour
             }
             triggered = true;
         }
+    }
+    public void PlaySound()
+    {
+        audioSource.Play();
     }
 }

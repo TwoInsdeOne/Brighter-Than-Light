@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 608701313581794563}
   - component: {fileID: 4117150633311950605}
   - component: {fileID: 34956565584985156}
+  - component: {fileID: 1830121458947370200}
   m_Layer: 6
   m_Name: Fire Star 1
   m_TagString: enemy
@@ -119,6 +120,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1830121458947370200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3766668296044251390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ec91fe0c6177f45b49201df0753013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 314977682059248090}
+  cameraTransform: {fileID: 0}
 --- !u!1 &5823623931738567858
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +314,7 @@ Transform:
   m_Children:
   - {fileID: 2134655586914855942}
   - {fileID: 2777909712025956471}
+  - {fileID: 7536216682689149236}
   m_Father: {fileID: 608701313581794563}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &8248633878975145238
@@ -363,6 +379,73 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.71
+--- !u!1001 &74404972322492998
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4364855851814338789}
+    m_Modifications:
+    - target: {fileID: 85459576243708843, guid: 4d52a22fb2adb4842bbe772c8dcfad37, type: 3}
+      propertyPath: m_Name
+      value: fire star sound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610612544847293298, guid: 4d52a22fb2adb4842bbe772c8dcfad37, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610612544847293298, guid: 4d52a22fb2adb4842bbe772c8dcfad37, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610612544847293298, guid: 4d52a22fb2adb4842bbe772c8dcfad37, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610612544847293298, guid: 4d52a22fb2adb4842bbe772c8dcfad37, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610612544847293298, guid: 4d52a22fb2adb4842bbe772c8dcfad37, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610612544847293298, guid: 4d52a22fb2adb4842bbe772c8dcfad37, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610612544847293298, guid: 4d52a22fb2adb4842bbe772c8dcfad37, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610612544847293298, guid: 4d52a22fb2adb4842bbe772c8dcfad37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610612544847293298, guid: 4d52a22fb2adb4842bbe772c8dcfad37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610612544847293298, guid: 4d52a22fb2adb4842bbe772c8dcfad37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d52a22fb2adb4842bbe772c8dcfad37, type: 3}
+--- !u!82 &314977682059248090 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 384864691838473116, guid: 4d52a22fb2adb4842bbe772c8dcfad37, type: 3}
+  m_PrefabInstance: {fileID: 74404972322492998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7536216682689149236 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7610612544847293298, guid: 4d52a22fb2adb4842bbe772c8dcfad37, type: 3}
+  m_PrefabInstance: {fileID: 74404972322492998}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2042399304109600941
 PrefabInstance:
   m_ObjectHideFlags: 0

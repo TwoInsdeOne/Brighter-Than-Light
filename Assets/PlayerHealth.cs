@@ -34,6 +34,8 @@ public class PlayerHealth : MonoBehaviour
     public GameObject healingFX;
 
     public FacePoses facePoses;
+
+    public AudioSource hitsound;
     // Start is called before the first frame update
     void Start()
     {
@@ -126,6 +128,8 @@ public class PlayerHealth : MonoBehaviour
     }
     public void TakeDamate(int amount)
     {
+        hitsound.pitch = Random.Range(0.7f, 1.2f);
+        hitsound.Play();
         health -= amount;
 
         if(health <= 0)
