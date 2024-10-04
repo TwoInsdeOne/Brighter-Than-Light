@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     public Animator visualAnimator;
     public bool free;
     public FacePoses facePoses;
+
+    public AudioSource flyingSound;
+    public float maxvelocity;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +42,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 visualAnimator.SetInteger("direction", 0);
             }
+            //maxvelocity = Mathf.Max(rb.velocity.magnitude, maxvelocity);
+            //flyingSound.volume = Mathf.Min(rb.velocity.magnitude/10, 1);
+            flyingSound.volume = direction.magnitude*0.6f;
         }
         
     }

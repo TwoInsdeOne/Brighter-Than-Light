@@ -9,6 +9,8 @@ public class GameMaster : MonoBehaviour
     public Vector2 playerStartLocation;
     private bool initialized;
     public SoundtrackManager soundtrackManager;
+
+    public EndGameEvent endGameEvent;
     private void Awake()
     {
         Time.timeScale = 0f;

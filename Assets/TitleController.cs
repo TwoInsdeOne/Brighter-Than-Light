@@ -28,7 +28,8 @@ public class TitleController : MonoBehaviour
     public Animator blackscreen;
     public Animator soundtrack;
     private bool startGameTriggered;
-    private float startGameTimer;
+    public float startGameTimer;
+    private bool gameStarted;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,12 +41,13 @@ public class TitleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startGameTriggered)
+        if (startGameTriggered && !gameStarted)
         {
             startGameTimer -= Time.deltaTime;
             if(startGameTimer < 0 )
             {
-                SceneManager.LoadSceneAsync("Game");
+                gameStarted = true;
+                SceneManager.LoadScene("Game");
             }
         }
     }

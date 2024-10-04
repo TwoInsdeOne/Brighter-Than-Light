@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     public float emission;
     public float hpLenght;
     public float hpX;
+    private bool enabledHPbar;
 
     public Animator visualAnimator;
     public float damageTimer;
@@ -36,23 +38,33 @@ public class PlayerHealth : MonoBehaviour
     public FacePoses facePoses;
 
     public AudioSource hitsound;
+    private GameMaster gm;
+    public Light2D light1;
+    public Light2D light2;
     // Start is called before the first frame update
     void Start()
     {
+        //gm = GameObject.Find("GM").GetComponent<GameMaster>();
+        //gm.endGameEvent.endGame.AddListener(DisableHPbarParticleSystem);
+        enabledHPbar = true;
         bleedingFX = bleeding.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        emission = 1200 * ((health*1f) / maxHealth);
-        hpLenght = 2 * ((health*1f) / maxHealth);
-        hpX = (hpLenght / 2f) - 1;
-        ParticleSystem.EmissionModule m = hpbar.emission;
-        m.rateOverTime = emission;
-        ParticleSystem.ShapeModule s = hpbar.shape;
-        s.position = new Vector3(hpX, 0, 0);
-        s.scale = new Vector3(hpLenght, 0.33f, 1);
+        if (enabledHPbar)
+        {
+            emission = 1200 * ((health * 1f) / maxHealth);
+            hpLenght = 2 * ((health * 1f) / maxHealth);
+            hpX = (hpLenght / 2f) - 1;
+            ParticleSystem.EmissionModule m = hpbar.emission;
+            m.rateOverTime = emission;
+            ParticleSystem.ShapeModule s = hpbar.shape;
+            s.position = new Vector3(hpX, 0, 0);
+            s.scale = new Vector3(hpLenght, 0.33f, 1);
+        }
+        
 
         damageTimer -= Time.deltaTime;
         if(damageTimer < 0.9f)
@@ -150,5 +162,16 @@ public class PlayerHealth : MonoBehaviour
     {
         visualAnimator.SetInteger("direction", 2 * side);
         facePoses.DrawSprite(false);
+    }
+    public void DisableHPbarParticleSystem()
+    {
+        enabledHPbar = false;
+        ParticleSystem.EmissionModule m = hpbar.emission;
+        m.rateOverTime = 0;
+    }
+    public void DisableLight()
+    {
+        light1.enabled = false;
+        light2.enabled = false;
     }
 }

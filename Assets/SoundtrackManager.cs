@@ -33,4 +33,8 @@ public class SoundtrackManager : MonoBehaviour
         audioSource.clip = nextTrack;
         audioSource.Play();
     }
+    public void Stop()
+    {
+        audioSource.Stop();
+    }
 }

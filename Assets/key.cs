@@ -16,6 +16,7 @@ public class key : MonoBehaviour
     private bool activated;
     public float rwInterval;
     private float rwTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,4 +46,5 @@ public class key : MonoBehaviour
     {
         gameEnd.SetTrigger("game end");
     }
+
 }
