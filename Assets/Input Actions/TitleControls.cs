@@ -35,6 +35,24 @@ public partial class @TitleControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""d2dbdedf-76d9-4767-866b-7f2704f2b206"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""ab429583-064f-4687-a3b9-85884c13a8bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +66,202 @@ public partial class @TitleControls: IInputActionCollection2, IDisposable
                     ""action"": ""Start"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d692c97a-19f0-4c1f-87e4-7a1426fdd34f"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f5318d7-35f5-461c-95f9-b5ec8f1bd1be"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""946082f2-fe23-4f38-97ca-c602115a0b85"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9390dee5-1a0d-49ee-a149-61b00f803b39"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""CustomizeAction"",
+            ""id"": ""112c25db-56ee-4304-8aff-c5da0914d5ca"",
+            ""actions"": [
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""c792af2a-62f8-443f-ad14-9935b624e946"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""e5e5352e-8cf3-49b8-b92e-14cfda117027"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""1853e58d-2795-4e11-a4cf-977e8a602f1f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b409527-f790-4741-8260-702c3f68ef98"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Finish"",
+                    ""type"": ""Button"",
+                    ""id"": ""8e66bfe8-66b6-4b4c-91a1-284fb9384be9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7355f4fc-0238-41ce-9d76-419fc4ca648c"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f176158f-40a6-40bf-8273-bd157ef00792"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""72617fdc-217e-4c7e-b2e2-5e2712cd9748"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2260e0ff-b0be-45dd-9d04-643cb03d3a1a"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18713ff0-4a1f-4b29-8194-49c3b5b0d73b"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cca7cdd7-8542-42ac-a890-893ac488f712"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""032798df-4133-471f-9b98-9f0b3aa5b51a"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""293eda1c-15d2-4315-89f2-102214793212"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""617d47b3-112c-4cfe-a302-d97d47d90af8"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Finish"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +271,15 @@ public partial class @TitleControls: IInputActionCollection2, IDisposable
         // TitleActions
         m_TitleActions = asset.FindActionMap("TitleActions", throwIfNotFound: true);
         m_TitleActions_Start = m_TitleActions.FindAction("Start", throwIfNotFound: true);
+        m_TitleActions_Up = m_TitleActions.FindAction("Up", throwIfNotFound: true);
+        m_TitleActions_Down = m_TitleActions.FindAction("Down", throwIfNotFound: true);
+        // CustomizeAction
+        m_CustomizeAction = asset.FindActionMap("CustomizeAction", throwIfNotFound: true);
+        m_CustomizeAction_Up = m_CustomizeAction.FindAction("Up", throwIfNotFound: true);
+        m_CustomizeAction_Down = m_CustomizeAction.FindAction("Down", throwIfNotFound: true);
+        m_CustomizeAction_Left = m_CustomizeAction.FindAction("Left", throwIfNotFound: true);
+        m_CustomizeAction_Right = m_CustomizeAction.FindAction("Right", throwIfNotFound: true);
+        m_CustomizeAction_Finish = m_CustomizeAction.FindAction("Finish", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -119,11 +342,15 @@ public partial class @TitleControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_TitleActions;
     private List<ITitleActionsActions> m_TitleActionsActionsCallbackInterfaces = new List<ITitleActionsActions>();
     private readonly InputAction m_TitleActions_Start;
+    private readonly InputAction m_TitleActions_Up;
+    private readonly InputAction m_TitleActions_Down;
     public struct TitleActionsActions
     {
         private @TitleControls m_Wrapper;
         public TitleActionsActions(@TitleControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Start => m_Wrapper.m_TitleActions_Start;
+        public InputAction @Up => m_Wrapper.m_TitleActions_Up;
+        public InputAction @Down => m_Wrapper.m_TitleActions_Down;
         public InputActionMap Get() { return m_Wrapper.m_TitleActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -136,6 +363,12 @@ public partial class @TitleControls: IInputActionCollection2, IDisposable
             @Start.started += instance.OnStart;
             @Start.performed += instance.OnStart;
             @Start.canceled += instance.OnStart;
+            @Up.started += instance.OnUp;
+            @Up.performed += instance.OnUp;
+            @Up.canceled += instance.OnUp;
+            @Down.started += instance.OnDown;
+            @Down.performed += instance.OnDown;
+            @Down.canceled += instance.OnDown;
         }
 
         private void UnregisterCallbacks(ITitleActionsActions instance)
@@ -143,6 +376,12 @@ public partial class @TitleControls: IInputActionCollection2, IDisposable
             @Start.started -= instance.OnStart;
             @Start.performed -= instance.OnStart;
             @Start.canceled -= instance.OnStart;
+            @Up.started -= instance.OnUp;
+            @Up.performed -= instance.OnUp;
+            @Up.canceled -= instance.OnUp;
+            @Down.started -= instance.OnDown;
+            @Down.performed -= instance.OnDown;
+            @Down.canceled -= instance.OnDown;
         }
 
         public void RemoveCallbacks(ITitleActionsActions instance)
@@ -160,8 +399,96 @@ public partial class @TitleControls: IInputActionCollection2, IDisposable
         }
     }
     public TitleActionsActions @TitleActions => new TitleActionsActions(this);
+
+    // CustomizeAction
+    private readonly InputActionMap m_CustomizeAction;
+    private List<ICustomizeActionActions> m_CustomizeActionActionsCallbackInterfaces = new List<ICustomizeActionActions>();
+    private readonly InputAction m_CustomizeAction_Up;
+    private readonly InputAction m_CustomizeAction_Down;
+    private readonly InputAction m_CustomizeAction_Left;
+    private readonly InputAction m_CustomizeAction_Right;
+    private readonly InputAction m_CustomizeAction_Finish;
+    public struct CustomizeActionActions
+    {
+        private @TitleControls m_Wrapper;
+        public CustomizeActionActions(@TitleControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Up => m_Wrapper.m_CustomizeAction_Up;
+        public InputAction @Down => m_Wrapper.m_CustomizeAction_Down;
+        public InputAction @Left => m_Wrapper.m_CustomizeAction_Left;
+        public InputAction @Right => m_Wrapper.m_CustomizeAction_Right;
+        public InputAction @Finish => m_Wrapper.m_CustomizeAction_Finish;
+        public InputActionMap Get() { return m_Wrapper.m_CustomizeAction; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CustomizeActionActions set) { return set.Get(); }
+        public void AddCallbacks(ICustomizeActionActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CustomizeActionActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CustomizeActionActionsCallbackInterfaces.Add(instance);
+            @Up.started += instance.OnUp;
+            @Up.performed += instance.OnUp;
+            @Up.canceled += instance.OnUp;
+            @Down.started += instance.OnDown;
+            @Down.performed += instance.OnDown;
+            @Down.canceled += instance.OnDown;
+            @Left.started += instance.OnLeft;
+            @Left.performed += instance.OnLeft;
+            @Left.canceled += instance.OnLeft;
+            @Right.started += instance.OnRight;
+            @Right.performed += instance.OnRight;
+            @Right.canceled += instance.OnRight;
+            @Finish.started += instance.OnFinish;
+            @Finish.performed += instance.OnFinish;
+            @Finish.canceled += instance.OnFinish;
+        }
+
+        private void UnregisterCallbacks(ICustomizeActionActions instance)
+        {
+            @Up.started -= instance.OnUp;
+            @Up.performed -= instance.OnUp;
+            @Up.canceled -= instance.OnUp;
+            @Down.started -= instance.OnDown;
+            @Down.performed -= instance.OnDown;
+            @Down.canceled -= instance.OnDown;
+            @Left.started -= instance.OnLeft;
+            @Left.performed -= instance.OnLeft;
+            @Left.canceled -= instance.OnLeft;
+            @Right.started -= instance.OnRight;
+            @Right.performed -= instance.OnRight;
+            @Right.canceled -= instance.OnRight;
+            @Finish.started -= instance.OnFinish;
+            @Finish.performed -= instance.OnFinish;
+            @Finish.canceled -= instance.OnFinish;
+        }
+
+        public void RemoveCallbacks(ICustomizeActionActions instance)
+        {
+            if (m_Wrapper.m_CustomizeActionActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ICustomizeActionActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CustomizeActionActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CustomizeActionActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public CustomizeActionActions @CustomizeAction => new CustomizeActionActions(this);
     public interface ITitleActionsActions
     {
         void OnStart(InputAction.CallbackContext context);
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
+    }
+    public interface ICustomizeActionActions
+    {
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
+        void OnLeft(InputAction.CallbackContext context);
+        void OnRight(InputAction.CallbackContext context);
+        void OnFinish(InputAction.CallbackContext context);
     }
 }

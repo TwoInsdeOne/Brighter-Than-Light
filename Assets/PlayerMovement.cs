@@ -15,12 +15,14 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioSource flyingSound;
     public float maxvelocity;
+    public bool flyingSoundEnable;
     // Start is called before the first frame update
     void Start()
     {
         playerControl = new PlayerControl();
         playerControl.Movement.Enable();
         free = true;
+        flyingSoundEnable = true;
     }
 
     // Update is called once per frame
@@ -44,9 +46,18 @@ public class PlayerMovement : MonoBehaviour
             }
             //maxvelocity = Mathf.Max(rb.velocity.magnitude, maxvelocity);
             //flyingSound.volume = Mathf.Min(rb.velocity.magnitude/10, 1);
-            flyingSound.volume = direction.magnitude*0.6f;
+            if (flyingSoundEnable)
+            {
+                flyingSound.volume = direction.magnitude * 0.6f;
+            }
+            
         }
         
+    }
+    public void DisablePlayerMovement()
+    {
+        playerControl.Movement.Disable();
+        flyingSoundEnable = false;
     }
     
 }

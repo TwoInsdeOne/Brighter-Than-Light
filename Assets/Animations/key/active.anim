@@ -391,7 +391,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 220
+    m_StopTime: 155
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -697,7 +697,70 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 220
+  - time: 29.983334
+    functionName: SpawnObject
+    data: 
+    objectReferenceParameter: {fileID: 568384038252311852, guid: 6ef412040f2fc784e8fb81466eb5f961, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 45
+    functionName: SpawnObject
+    data: 
+    objectReferenceParameter: {fileID: 3796093646529109763, guid: a8f0f423b4d2c904fbe3696594a3d72e, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 60
+    functionName: SpawnObject
+    data: 
+    objectReferenceParameter: {fileID: 574896621089986117, guid: 725def9fbbab4a54bafd06382d9e1a49, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 75.03333
+    functionName: SpawnObject
+    data: 
+    objectReferenceParameter: {fileID: 7050936667850137694, guid: 1e5de20ea0a0f5b4e8a1d6b400c6aeac, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 90
+    functionName: SpawnObject
+    data: 
+    objectReferenceParameter: {fileID: 8305745507692974778, guid: b1a9659e3918e1c419d659c0abc679e6, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 105
+    functionName: SpawnObject
+    data: 
+    objectReferenceParameter: {fileID: 6858290803879427467, guid: 09afa3372ac37c94d9b4a51b54c3387e, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 120.03333
+    functionName: SpawnObject
+    data: 
+    objectReferenceParameter: {fileID: 8372140320693411735, guid: 6e8ccd880596c7d4a8a00a813265f1d6, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 135
+    functionName: SpawnObject
+    data: 
+    objectReferenceParameter: {fileID: 3874615689097183857, guid: d7de8c6518ba7504fadf412991cf92af, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 150
+    functionName: SpawnObject
+    data: 
+    objectReferenceParameter: {fileID: 2536979843268326584, guid: 28e278c0adee46a40be7b37f80d64e52, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 155
     functionName: GameEnd
     data: 
     objectReferenceParameter: {fileID: 0}

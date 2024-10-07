@@ -1,0 +1,6 @@
+celeste blue - 3676F5
+jade gree - 00A86B
+dark blue - 00028E
+dark ruby - 950C3F
+burnt gold - 7B5609
+alpha = 68
