@@ -24,7 +24,47 @@ public class Customization : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Color newWallColor = Customization.ColorCodeToColor(PlayerPrefs.GetString("wall color"));
+        walls.ChangeAllChildrenColor(new Color(newWallColor.r, newWallColor.g, newWallColor.b, 0.68f));
+        Color newPlayerColor = Customization.ColorCodeToColor(PlayerPrefs.GetString("glimmer color"));
+        glimmer.ChangeAllChildrenColor(newPlayerColor);
+        option1 = PlayerPrefs.GetInt("option1");
+        option2 = PlayerPrefs.GetInt("option2");
+
+        if (option1 == 0)
+        {
+            selector1.anchoredPosition = new Vector3(-500, 70, 0);
+        } else if (option1 == 1)
+        {
+            selector1.anchoredPosition = new Vector3(-350, 70, 0);
+        } else if (option1 == 2)
+        {
+            selector1.anchoredPosition = new Vector3(-200, 70, 0);
+        } else if (option1 == 3)
+        {
+            selector1.anchoredPosition = new Vector3(-50, 70, 0);
+        } else if (option1 == 4)
+        {
+            selector1.anchoredPosition = new Vector3(100, 70, 0);
+        }
+
+        if (option2 == 0)
+        {
+            selector2.anchoredPosition = new Vector3(-500, -70, 0);
+        } else if (option2 == 1)
+        {
+            selector2.anchoredPosition = new Vector3(-350, -70, 0);
+        } else if (option2 == 2)
+        {
+            selector2.anchoredPosition = new Vector3(-200, -70, 0);
+        } else if (option2 == 3)
+        {
+            selector2.anchoredPosition = new Vector3(-50, -70, 0);
+        } else if (option2 == 4)
+        {
+            selector2.anchoredPosition = new Vector3(100, -70, 0);
+        }
+
     }
 
     // Update is called once per frame
@@ -83,6 +123,9 @@ public class Customization : MonoBehaviour
     {
         PlayerPrefs.SetString("glimmer color", ColorToColorCode(glimmerColors[option1].color));
         PlayerPrefs.SetString("wall color", ColorToColorCode(wallColors[option2].color));
+
+        PlayerPrefs.SetInt("option1", option1);
+        PlayerPrefs.SetInt("option2", option2);
         Debug.Log(PlayerPrefs.GetString("glimmer color"));
         Debug.Log(PlayerPrefs.GetString("wall color"));
     }
