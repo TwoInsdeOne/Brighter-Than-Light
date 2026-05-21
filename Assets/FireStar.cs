@@ -90,7 +90,7 @@ public class FireStar : MonoBehaviour
     }
     void TestStuck()
     {
-        if(rb.velocity.sqrMagnitude < 0.25f)
+        if(rb.linearVelocity.sqrMagnitude < 0.25f)
         {
             stuckTimer += Time.deltaTime;
         } else
