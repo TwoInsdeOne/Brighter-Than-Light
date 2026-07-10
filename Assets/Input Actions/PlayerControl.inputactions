@@ -233,6 +233,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Act",
+            "id": "38e41178-e11d-461b-b71e-3c63120f4b1c",
+            "actions": [
+                {
+                    "name": "Transpose",
+                    "type": "Button",
+                    "id": "7454a1e9-6b8b-434c-b3d4-1a22cf6ee2e3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "99cf973d-8768-47c5-8a58-6080758e7aea",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Transpose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c455695c-adc8-4cb0-9887-f23ea6a9f366",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Transpose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource flyingSound;
     public float maxvelocity;
     public bool flyingSoundEnable;
+    public float lookSide;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +38,11 @@ public class PlayerMovement : MonoBehaviour
             if (direction.x > 0)
             {
                 visualAnimator.SetInteger("direction", 1);
+                lookSide = 1;
             } else if (direction.x < 0)
             {
                 visualAnimator.SetInteger("direction", -1);
+                lookSide = -1;
             } else if (direction.x == 0)
             {
                 visualAnimator.SetInteger("direction", 0);

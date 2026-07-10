@@ -319,6 +319,45 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Act"",
+            ""id"": ""38e41178-e11d-461b-b71e-3c63120f4b1c"",
+            ""actions"": [
+                {
+                    ""name"": ""Transpose"",
+                    ""type"": ""Button"",
+                    ""id"": ""7454a1e9-6b8b-434c-b3d4-1a22cf6ee2e3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""99cf973d-8768-47c5-8a58-6080758e7aea"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Transpose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c455695c-adc8-4cb0-9887-f23ea6a9f366"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Transpose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -329,12 +368,16 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         // Shield
         m_Shield = asset.FindActionMap("Shield", throwIfNotFound: true);
         m_Shield_UseShield = m_Shield.FindAction("UseShield", throwIfNotFound: true);
+        // Act
+        m_Act = asset.FindActionMap("Act", throwIfNotFound: true);
+        m_Act_Transpose = m_Act.FindAction("Transpose", throwIfNotFound: true);
     }
 
     ~@PlayerControl()
     {
         UnityEngine.Debug.Assert(!m_Movement.enabled, "This will cause a leak and performance issues, PlayerControl.Movement.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Shield.enabled, "This will cause a leak and performance issues, PlayerControl.Shield.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Act.enabled, "This will cause a leak and performance issues, PlayerControl.Act.Disable() has not been called.");
     }
 
     /// <summary>
@@ -598,6 +641,102 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="ShieldActions" /> instance referencing this action map.
     /// </summary>
     public ShieldActions @Shield => new ShieldActions(this);
+
+    // Act
+    private readonly InputActionMap m_Act;
+    private List<IActActions> m_ActActionsCallbackInterfaces = new List<IActActions>();
+    private readonly InputAction m_Act_Transpose;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Act".
+    /// </summary>
+    public struct ActActions
+    {
+        private @PlayerControl m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public ActActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Act/Transpose".
+        /// </summary>
+        public InputAction @Transpose => m_Wrapper.m_Act_Transpose;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Act; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="ActActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(ActActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="ActActions" />
+        public void AddCallbacks(IActActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ActActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ActActionsCallbackInterfaces.Add(instance);
+            @Transpose.started += instance.OnTranspose;
+            @Transpose.performed += instance.OnTranspose;
+            @Transpose.canceled += instance.OnTranspose;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="ActActions" />
+        private void UnregisterCallbacks(IActActions instance)
+        {
+            @Transpose.started -= instance.OnTranspose;
+            @Transpose.performed -= instance.OnTranspose;
+            @Transpose.canceled -= instance.OnTranspose;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="ActActions.UnregisterCallbacks(IActActions)" />.
+        /// </summary>
+        /// <seealso cref="ActActions.UnregisterCallbacks(IActActions)" />
+        public void RemoveCallbacks(IActActions instance)
+        {
+            if (m_Wrapper.m_ActActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="ActActions.AddCallbacks(IActActions)" />
+        /// <seealso cref="ActActions.RemoveCallbacks(IActActions)" />
+        /// <seealso cref="ActActions.UnregisterCallbacks(IActActions)" />
+        public void SetCallbacks(IActActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ActActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ActActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="ActActions" /> instance referencing this action map.
+    /// </summary>
+    public ActActions @Act => new ActActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Movement" which allows adding and removing callbacks.
     /// </summary>
@@ -627,5 +766,20 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnUseShield(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Act" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="ActActions.AddCallbacks(IActActions)" />
+    /// <seealso cref="ActActions.RemoveCallbacks(IActActions)" />
+    public interface IActActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Transpose" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTranspose(InputAction.CallbackContext context);
     }
 }

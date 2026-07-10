@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FireStarTrigger : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class FireStarTrigger : MonoBehaviour
     public bool setNextSpline;
     public Door doorToOpen;
     public AudioSource audioSource;
+
+    public UnityEvent triggerFireStar;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,7 @@ public class FireStarTrigger : MonoBehaviour
             }
             done = true;
             GetComponent<Animator>().SetTrigger("deactivate");
+            triggerFireStar.Invoke();
             if (setNextSpline)
             {
                 sfg.UpdateSpline(nextSpline);
