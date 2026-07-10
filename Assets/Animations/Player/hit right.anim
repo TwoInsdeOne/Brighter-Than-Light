@@ -1815,14 +1815,28 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: ChangeToColor
+    functionName: ChangePrimaryToColor
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 2
     messageOptions: 0
+  - time: 0
+    functionName: ChangeSecondaryToColor
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 2
+    messageOptions: 0
+  - time: 0.98333335
+    functionName: ChangeSecondaryToColor
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 3
+    messageOptions: 0
   - time: 1
-    functionName: ChangeToColor
+    functionName: ChangePrimaryToColor
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

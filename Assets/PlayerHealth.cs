@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public float kbSpeed;
     public GameObject fire1VFX;
     public ShieldController shieldController;
+    public UseShieldController useShieldController;
 
     public ParticleSystem hpbar;
     public float emission;
@@ -41,6 +42,9 @@ public class PlayerHealth : MonoBehaviour
     private GameMaster gm;
     public Light2D light1;
     public Light2D light2;
+
+    public bool slowHeal;
+    public float lastSlowHeal;
     // Start is called before the first frame update
     void Start()
     {
@@ -90,10 +94,22 @@ public class PlayerHealth : MonoBehaviour
             bloodEmission.rateOverTime = (5+ i) * (1 - (health + 0f) / maxHealth);
         }
     }
+    private void FixedUpdate()
+    {
+        if (slowHeal)
+        {
+            if(Time.time - lastSlowHeal > 1f)
+            {
+                Heal(1);
+                lastSlowHeal = Time.time;
+            }
+            
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
-        if(collision.gameObject.tag == "enemy" && !shieldController.active && damageTimer <= 0 && !gameover)
+        if(collision.gameObject.tag == "enemy" && !shieldController.active && !useShieldController.active && damageTimer <= 0 && !gameover)
         {
             damageTimer = 1;
             playerMovement.playerControl.Disable();
@@ -122,7 +138,22 @@ public class PlayerHealth : MonoBehaviour
 
 
         }
+        
 
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "leaf")
+        {
+            slowHeal = true;
+        }
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.tag == "leaf")
+        {
+            slowHeal = false;
+        }
     }
     public void Heal(int amount)
     {

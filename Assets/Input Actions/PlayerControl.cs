@@ -212,6 +212,111 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""e87f8487-2213-4717-8721-6dd443ee8441"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""b9e11e06-74f2-4296-a13b-9f02e990c5c0"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""22173279-5fff-4b7f-a552-35a5b44f3e21"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""65b19313-492e-44ae-90af-a2e24aec7606"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""221cda1e-5397-4883-a7f6-c7b1b8ba38fa"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""Shield"",
+            ""id"": ""63d83aaa-693f-4095-8253-6a4c972088dd"",
+            ""actions"": [
+                {
+                    ""name"": ""UseShield"",
+                    ""type"": ""Button"",
+                    ""id"": ""04a443e1-57b4-4de1-bebc-5e9bd001d11b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5cb8f0f7-6fe7-40e6-84f1-dd3fd63d20c6"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseShield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e1c67031-23ca-44be-a763-6ce9c7be74f5"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseShield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5744544-a6f1-4eac-b482-4e2adef2557f"",
+                    ""path"": ""<XInputController>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseShield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -221,11 +326,15 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
+        // Shield
+        m_Shield = asset.FindActionMap("Shield", throwIfNotFound: true);
+        m_Shield_UseShield = m_Shield.FindAction("UseShield", throwIfNotFound: true);
     }
 
     ~@PlayerControl()
     {
         UnityEngine.Debug.Assert(!m_Movement.enabled, "This will cause a leak and performance issues, PlayerControl.Movement.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Shield.enabled, "This will cause a leak and performance issues, PlayerControl.Shield.Disable() has not been called.");
     }
 
     /// <summary>
@@ -393,6 +502,102 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="MovementActions" /> instance referencing this action map.
     /// </summary>
     public MovementActions @Movement => new MovementActions(this);
+
+    // Shield
+    private readonly InputActionMap m_Shield;
+    private List<IShieldActions> m_ShieldActionsCallbackInterfaces = new List<IShieldActions>();
+    private readonly InputAction m_Shield_UseShield;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Shield".
+    /// </summary>
+    public struct ShieldActions
+    {
+        private @PlayerControl m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public ShieldActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Shield/UseShield".
+        /// </summary>
+        public InputAction @UseShield => m_Wrapper.m_Shield_UseShield;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Shield; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="ShieldActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(ShieldActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="ShieldActions" />
+        public void AddCallbacks(IShieldActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ShieldActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ShieldActionsCallbackInterfaces.Add(instance);
+            @UseShield.started += instance.OnUseShield;
+            @UseShield.performed += instance.OnUseShield;
+            @UseShield.canceled += instance.OnUseShield;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="ShieldActions" />
+        private void UnregisterCallbacks(IShieldActions instance)
+        {
+            @UseShield.started -= instance.OnUseShield;
+            @UseShield.performed -= instance.OnUseShield;
+            @UseShield.canceled -= instance.OnUseShield;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="ShieldActions.UnregisterCallbacks(IShieldActions)" />.
+        /// </summary>
+        /// <seealso cref="ShieldActions.UnregisterCallbacks(IShieldActions)" />
+        public void RemoveCallbacks(IShieldActions instance)
+        {
+            if (m_Wrapper.m_ShieldActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="ShieldActions.AddCallbacks(IShieldActions)" />
+        /// <seealso cref="ShieldActions.RemoveCallbacks(IShieldActions)" />
+        /// <seealso cref="ShieldActions.UnregisterCallbacks(IShieldActions)" />
+        public void SetCallbacks(IShieldActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ShieldActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ShieldActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="ShieldActions" /> instance referencing this action map.
+    /// </summary>
+    public ShieldActions @Shield => new ShieldActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Movement" which allows adding and removing callbacks.
     /// </summary>
@@ -407,5 +612,20 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Shield" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="ShieldActions.AddCallbacks(IShieldActions)" />
+    /// <seealso cref="ShieldActions.RemoveCallbacks(IShieldActions)" />
+    public interface IShieldActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "UseShield" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUseShield(InputAction.CallbackContext context);
     }
 }

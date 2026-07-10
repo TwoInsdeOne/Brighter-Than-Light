@@ -11,8 +11,7 @@ public class GameMaster : MonoBehaviour
     public SoundtrackManager soundtrackManager;
 
     public EndGameEvent endGameEvent;
-    public ChangeAllColors walls;
-    public ChangeAllColors playerVisual;
+    public ChangePlayerColors playerVisual;
     public ColorChanger playerColorChanger;
     private void Awake()
     {
@@ -21,11 +20,12 @@ public class GameMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Color newWallColor = Customization.ColorCodeToColor(PlayerPrefs.GetString("wall color"));
-        walls.ChangeAllChildrenColor(new Color(newWallColor.r, newWallColor.g, newWallColor.b, 0.68f));
-        Color newPlayerColor = Customization.ColorCodeToColor(PlayerPrefs.GetString("glimmer color"));
-        playerVisual.ChangeAllChildrenColor( newPlayerColor );
-        playerColorChanger.colors[0] = newPlayerColor;
+        Color newSecondaryColor = Customization.ColorCodeToColor(PlayerPrefs.GetString("secondary color"));
+        playerVisual.ChangeSecondaryColor(newSecondaryColor);
+        Color newPrimaryColor = Customization.ColorCodeToColor(PlayerPrefs.GetString("primary color"));
+        playerVisual.ChangePrimaryColor(newPrimaryColor);
+        playerColorChanger.colors[0] = newPrimaryColor;
+        playerColorChanger.colors[3] = newSecondaryColor;
     }
 
     // Update is called once per frame

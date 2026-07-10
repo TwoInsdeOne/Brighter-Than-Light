@@ -5,21 +5,19 @@ using UnityEngine;
 public class ColorChanger : MonoBehaviour
 {
     public List<Color> colors;
-    public List<SpriteRenderer> parts;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public List<SpriteRenderer> primaryParts;
+    public List<SpriteRenderer> secondaryParts;
 
-    // Update is called once per frame
-    void Update()
+    public void ChangePrimaryToColor(int colorId)
     {
-        
+        foreach (var part in primaryParts)
+        {
+            part.color = colors[colorId];
+        }
     }
-    public void ChangeToColor(int colorId)
+    public void ChangeSecondaryToColor(int colorId)
     {
-        foreach (var part in parts)
+        foreach (var part in secondaryParts)
         {
             part.color = colors[colorId];
         }

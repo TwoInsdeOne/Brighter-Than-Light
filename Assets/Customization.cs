@@ -11,58 +11,58 @@ public class Customization : MonoBehaviour
     public int option1;
     public int option2;
 
-    public TMPro.TMP_Text glimmercolorText;
-    public TMPro.TMP_Text wallcolorText;
+    public TMPro.TMP_Text primaryColorText;
+    public TMPro.TMP_Text secondColorText;
     public RectTransform selector1;
     public RectTransform selector2;
     public Image selector1Image;
     public Image selector2Image;
-    public ChangeAllColors walls;
-    public ChangeAllColors glimmer;
-    public List<Image> glimmerColors;
-    public List<Image> wallColors;
+    public ChangePlayerColors glimmer;
+    public List<Image> primaryColors;
+    public List<Image> secondaryColors;
     // Start is called before the first frame update
     void Start()
     {
-        Color newWallColor = Customization.ColorCodeToColor(PlayerPrefs.GetString("wall color"));
-        walls.ChangeAllChildrenColor(new Color(newWallColor.r, newWallColor.g, newWallColor.b, 0.68f));
+        Color newPlayer2Color = Customization.ColorCodeToColor(PlayerPrefs.GetString("wall color"));
+        
         Color newPlayerColor = Customization.ColorCodeToColor(PlayerPrefs.GetString("glimmer color"));
-        glimmer.ChangeAllChildrenColor(newPlayerColor);
+        glimmer.ChangePrimaryColor(newPlayerColor);
+        glimmer.ChangeSecondaryColor(newPlayer2Color);
         option1 = PlayerPrefs.GetInt("option1");
         option2 = PlayerPrefs.GetInt("option2");
 
         if (option1 == 0)
         {
-            selector1.anchoredPosition = new Vector3(-500, 70, 0);
+            selector1.anchoredPosition = new Vector3(-400, 70, 0);
         } else if (option1 == 1)
         {
             selector1.anchoredPosition = new Vector3(-350, 70, 0);
         } else if (option1 == 2)
         {
-            selector1.anchoredPosition = new Vector3(-200, 70, 0);
+            selector1.anchoredPosition = new Vector3(-100, 70, 0);
         } else if (option1 == 3)
         {
-            selector1.anchoredPosition = new Vector3(-50, 70, 0);
+            selector1.anchoredPosition = new Vector3(50, 70, 0);
         } else if (option1 == 4)
         {
-            selector1.anchoredPosition = new Vector3(100, 70, 0);
+            selector1.anchoredPosition = new Vector3(200, 70, 0);
         }
 
         if (option2 == 0)
         {
-            selector2.anchoredPosition = new Vector3(-500, -70, 0);
+            selector2.anchoredPosition = new Vector3(-400, -70, 0);
         } else if (option2 == 1)
         {
-            selector2.anchoredPosition = new Vector3(-350, -70, 0);
+            selector2.anchoredPosition = new Vector3(-250, -70, 0);
         } else if (option2 == 2)
         {
-            selector2.anchoredPosition = new Vector3(-200, -70, 0);
+            selector2.anchoredPosition = new Vector3(-100, -70, 0);
         } else if (option2 == 3)
         {
-            selector2.anchoredPosition = new Vector3(-50, -70, 0);
+            selector2.anchoredPosition = new Vector3(50, -70, 0);
         } else if (option2 == 4)
         {
-            selector2.anchoredPosition = new Vector3(100, -70, 0);
+            selector2.anchoredPosition = new Vector3(200, -70, 0);
         }
 
     }
@@ -72,62 +72,62 @@ public class Customization : MonoBehaviour
     {
         if(selection == 0)
         {
-            glimmercolorText.color = new Color(1, 1, 1, 1);
-            wallcolorText.color = new Color(1, 1, 1, 0.5f);
+            primaryColorText.color = new Color(1, 1, 1, 1);
+            secondColorText.color = new Color(1, 1, 1, 0.5f);
             selector1Image.color = new Color(1, 1, 1, 0.5f);
             selector2Image.color = new Color(1, 1, 1, 0.25f);
             if(option1 == 0)
             {
-                selector1.anchoredPosition = new Vector3(-500, 70, 0);
+                selector1.anchoredPosition = new Vector3(-400, 70, 0);
             }else if(option1 == 1)
             {
-                selector1.anchoredPosition = new Vector3(-350, 70, 0);
+                selector1.anchoredPosition = new Vector3(-250, 70, 0);
             } else if(option1 == 2)
             {
-                selector1.anchoredPosition = new Vector3(-200, 70, 0);
+                selector1.anchoredPosition = new Vector3(-100, 70, 0);
             } else if (option1 == 3)
             {
-                selector1.anchoredPosition = new Vector3(-50, 70, 0);
+                selector1.anchoredPosition = new Vector3(50, 70, 0);
             } else if(option1 == 4)
             {
-                selector1.anchoredPosition = new Vector3(100, 70, 0);
+                selector1.anchoredPosition = new Vector3(200, 70, 0);
             }
-            glimmer.ChangeAllChildrenColor(glimmerColors[option1].color);
+            glimmer.ChangePrimaryColor(primaryColors[option1].color);
         }else if(selection == 1)
         {
-            glimmercolorText.color = new Color(1, 1, 1, 0.5f);
-            wallcolorText.color = new Color(1, 1, 1, 1f);
+            primaryColorText.color = new Color(1, 1, 1, 0.5f);
+            secondColorText.color = new Color(1, 1, 1, 1f);
 
             selector1Image.color = new Color(1, 1, 1, 0.25f);
             selector2Image.color = new Color(1, 1, 1, 0.5f);
             if (option2 == 0)
             {
-                selector2.anchoredPosition = new Vector3(-500, -70, 0);
+                selector2.anchoredPosition = new Vector3(-400, -70, 0);
             } else if (option2 == 1)
             {
-                selector2.anchoredPosition = new Vector3(-350, -70, 0);
+                selector2.anchoredPosition = new Vector3(-250, -70, 0);
             } else if (option2 == 2)
             {
-                selector2.anchoredPosition = new Vector3(-200, -70, 0);
+                selector2.anchoredPosition = new Vector3(-100, -70, 0);
             } else if (option2 == 3)
             {
-                selector2.anchoredPosition = new Vector3(-50, -70, 0);
+                selector2.anchoredPosition = new Vector3(50, -70, 0);
             } else if (option2 == 4)
             {
-                selector2.anchoredPosition = new Vector3(100, -70, 0);
+                selector2.anchoredPosition = new Vector3(200, -70, 0);
             }
-            walls.ChangeAllChildrenColor(wallColors[option2].color);
+            glimmer.ChangeSecondaryColor(secondaryColors[option2].color);
         }
     }
     public void Finish()
     {
-        PlayerPrefs.SetString("glimmer color", ColorToColorCode(glimmerColors[option1].color));
-        PlayerPrefs.SetString("wall color", ColorToColorCode(wallColors[option2].color));
+        PlayerPrefs.SetString("primary color", ColorToColorCode(primaryColors[option1].color));
+        PlayerPrefs.SetString("secondary color", ColorToColorCode(secondaryColors[option2].color));
 
         PlayerPrefs.SetInt("option1", option1);
         PlayerPrefs.SetInt("option2", option2);
-        Debug.Log(PlayerPrefs.GetString("glimmer color"));
-        Debug.Log(PlayerPrefs.GetString("wall color"));
+        Debug.Log(PlayerPrefs.GetString("primary color"));
+        Debug.Log(PlayerPrefs.GetString("secondary color"));
     }
     public static string ColorToColorCode(Color color)
     {
